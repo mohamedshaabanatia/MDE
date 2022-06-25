@@ -1,7 +1,7 @@
 # INSTALL cks-master
 gcloud compute ssh cks-master
 sudo -i
-bash <(curl -s https://github.com/mohamedshaabanatia/CKS-course-environment/blob/master/cluster-setup/latest/install_master.sh)
+bash <(curl -s https://raw.githubusercontent.com/mohamedshaabanatia/CKS-course-environment/master/cluster-setup/latest/install_master.sh)
 
 
 # INSTALL cks-worker
