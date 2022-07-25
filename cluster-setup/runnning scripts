@@ -1,21 +1,8 @@
 # INSTALL cks-master
-gcloud compute ssh cks-master
-sudo -i
 bash <(curl -s https://raw.githubusercontent.com/mohamedshaabanatia/CKS-course-environment/master/cluster-setup/latest/install_master.sh)
 
-
 # INSTALL cks-worker
-gcloud compute ssh cks-worker
-sudo -i
 bash <(curl -s https://raw.githubusercontent.com/mohamedshaabanatia/CKS-course-environment/master/cluster-setup/latest/install_worker.sh)
 
-
-
-#helm
-bash <(curl -s https://raw.githubusercontent.com/mohamedshaabanatia/CKS-course-environment/master/cluster-setup/latest/helm.sh)
-###################
-#vote
-bash <(curl -s https://raw.githubusercontent.com/mohamedshaabanatia/CKS-course-environment/master/cluster-setup/latest/Deploy-vote-app)
-####################
-#nginx-crash
-bash <(curl -s https://raw.githubusercontent.com/mohamedshaabanatia/CKS-course-environment/master/cluster-setup/latest/nginx-crash)
+#Setup Apps
+bash <(curl -s https://raw.githubusercontent.com/mohamedshaabanatia/MDE/master/cluster-setup/setup-apps)
