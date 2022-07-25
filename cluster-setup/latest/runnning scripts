@@ -8,3 +8,12 @@ bash <(curl -s https://raw.githubusercontent.com/mohamedshaabanatia/CKS-course-e
 gcloud compute ssh cks-worker
 sudo -i
 bash <(curl -s https://raw.githubusercontent.com/mohamedshaabanatia/CKS-course-environment/master/cluster-setup/latest/install_worker.sh)
+
+
+
+#helm
+bash <(curl -s https://raw.githubusercontent.com/mohamedshaabanatia/CKS-course-environment/master/cluster-setup/latest/helm.sh)
+###################
+#vote
+bach <(curl -s https://raw.githubusercontent.com/mohamedshaabanatia/CKS-course-environment/master/cluster-setup/latest/Deploy-vote-app)
+####################
