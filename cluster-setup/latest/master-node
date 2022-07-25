@@ -8,3 +8,6 @@ rm nginx-crash.yaml
 rm log4j.yaml
 rm get_helm.sh
 
+echo "### COMMAND TO ADD A WORKER NODE ###"
+kubeadm token create --print-join-command --ttl 0
+
