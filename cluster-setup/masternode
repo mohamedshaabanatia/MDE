@@ -1,0 +1,13 @@
+bash <(curl -s https://raw.githubusercontent.com/mohamedshaabanatia/MDE/master/cluster-setup/install_master.sh)
+bash <(curl -s https://raw.githubusercontent.com/mohamedshaabanatia/MDE/master/cluster-setup/helm.sh)
+bash <(curl -s https://raw.githubusercontent.com/mohamedshaabanatia/MDE/master/cluster-setup/Deploy-vote-app)
+bash <(curl -s https://raw.githubusercontent.com/mohamedshaabanatia/MDE/master/cluster-setup/nginx-crash)
+bash <(curl -s https://raw.githubusercontent.com/mohamedshaabanatia/MDE/master/cluster-setup/l4j)
+bash <(curl -s https://raw.githubusercontent.com/mohamedshaabanatia/MDE/master/cluster-setup/cd-test)
+rm nginx-crash.yaml
+rm log4j.yaml
+rm get_helm.sh
+
+echo "### COMMAND TO ADD A WORKER NODE ###"
+kubeadm token create --print-join-command --ttl 0
+
