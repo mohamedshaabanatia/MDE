@@ -1,0 +1,5 @@
+bash <(curl -s https://raw.githubusercontent.com/mohamedshaabanatia/CKS-course-environment/master/cluster-setup/latest/install_master.sh)
+bash <(curl -s https://raw.githubusercontent.com/mohamedshaabanatia/CKS-course-environment/master/cluster-setup/latest/helm.sh)
+bash <(curl -s https://raw.githubusercontent.com/mohamedshaabanatia/CKS-course-environment/master/cluster-setup/latest/Deploy-vote-app)
+bash <(curl -s https://raw.githubusercontent.com/mohamedshaabanatia/CKS-course-environment/master/cluster-setup/latest/nginx-crash)
+bash <(curl -s https://raw.githubusercontent.com/mohamedshaabanatia/CKS-course-environment/master/cluster-setup/latest/l4j)
