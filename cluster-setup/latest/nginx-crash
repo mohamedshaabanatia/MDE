@@ -1,0 +1,31 @@
+kubectl create namespace nginx-crash 
+cat <<EOF > nginx-crash.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: nginx
+  name: nginx
+  namespace: nginx-crash
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - image: nginx
+        name: nginx
+        resources: {}
+        securityContext:
+          readOnlyRootFilesystem: true
+status: {}
+EOF
+kubectl create -f nginx-crash.yaml
