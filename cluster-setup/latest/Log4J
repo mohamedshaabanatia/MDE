@@ -1,0 +1,52 @@
+apt install openjdk-11-jre-headless 
+kubectl create ns log4j
+kubectl crate deployment log4j -n log4j --image shaabansysdig/log4j:latest
+cat <<EOF > log4j.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: log4j
+  name: log4j
+  namespace: log4j
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: log4j
+  template:
+    metadata:
+      labels:
+        app: log4j
+    spec:
+      containers:
+        - name: log4j
+          image: shaabansysdig/log4j:latest
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: log4j
+  labels:
+    app: log4j
+  namespace: log4j
+spec:
+  selector:
+    app: log4j
+  type: NodePort
+  ports:
+   - port: 8082
+     targetPort: 8080
+EOF
+git clone https://github.com/black9/Log4shell_JNDIExploit.git
+cd Log4shell_JNDIExploit
+unzip JNDIExploit.v1.2.zip
+cd ..
+git clone https://github.com/fullhunt/log4j-scan.git
+cd log4j-scan
+pip3 install -r requirements.txt
+
