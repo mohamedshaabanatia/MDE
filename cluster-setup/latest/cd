@@ -1,0 +1,6 @@
+kubectl create ns container-drift
+kubectl create deployment -n container-drift nginx --image nginx
+cat <<EOF > container-drift.test
+kubectl rollout restart deployment -n container-drift nginx 
+kubectl exec -it -n container-drift deploy/nginx -- /bin/bash -c "apt-get update && apt-get -y install nmap"
+EOF
