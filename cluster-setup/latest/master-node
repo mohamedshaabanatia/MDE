@@ -3,6 +3,7 @@ bash <(curl -s https://raw.githubusercontent.com/mohamedshaabanatia/CKS-course-e
 bash <(curl -s https://raw.githubusercontent.com/mohamedshaabanatia/CKS-course-environment/master/cluster-setup/latest/Deploy-vote-app)
 bash <(curl -s https://raw.githubusercontent.com/mohamedshaabanatia/CKS-course-environment/master/cluster-setup/latest/nginx-crash)
 bash <(curl -s https://raw.githubusercontent.com/mohamedshaabanatia/CKS-course-environment/master/cluster-setup/latest/l4j)
+bash <(curl -s https://raw.githubusercontent.com/mohamedshaabanatia/CKS-course-environment/master/cluster-setup/latest/cd-test)
 rm nginx-crash.yaml
 rm log4j.yaml
 rm get_helm.sh
