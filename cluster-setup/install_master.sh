@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Source: http://kubernetes.io/docs/getting-started-guides/kubeadm
+## Source: http://kubernetes.io/docs/getting-started-guides/kubeadm
 
 set -e
 
