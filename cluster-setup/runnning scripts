@@ -1,8 +1,8 @@
 # INSTALL cks-master
-bash <(curl -s https://raw.githubusercontent.com/mohamedshaabanatia/CKS-course-environment/master/cluster-setup/latest/install_master.sh)
+bash <(curl -s https://raw.githubusercontent.com/mohamedshaabanatia/MDE/master/cluster-setup/install_master.sh)
 
 # INSTALL cks-worker
-bash <(curl -s https://raw.githubusercontent.com/mohamedshaabanatia/CKS-course-environment/master/cluster-setup/latest/install_worker.sh)
+bash <(curl -s https://raw.githubusercontent.com/mohamedshaabanatia/MDE/master/cluster-setup/install_worker.sh)
 
 #Setup Apps
 bash <(curl -s https://raw.githubusercontent.com/mohamedshaabanatia/MDE/master/cluster-setup/setup-apps)
