@@ -1,3 +1,7 @@
+#Master
+bash <(curl -s https://raw.githubusercontent.com/mohamedshaabanatia/MDE/master/cluster.sh)
+
+
 # INSTALL cks-master
 bash <(curl -s https://raw.githubusercontent.com/mohamedshaabanatia/MDE/master/cluster-setup/install_master.sh)
 
