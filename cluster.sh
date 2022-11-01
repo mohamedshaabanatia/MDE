@@ -19,6 +19,7 @@ kubectl taint nodes $(kubectl get nodes --no-headers) node-role.kubernetes.io/ma
 ###Deploy Argo ( How to modify server inseceure and restart deployment)
 kubectl create namespace argocd
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+kubectl patch -n argocd configmaps argocd-cmd-params-cm --type merge -p '{"data":{"server.insecure":"true"}}'
 kubectl rollout restart deployment -n argocd argocd-server argocd-repo-server
 kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo > argopass
 
@@ -27,7 +28,6 @@ curl -sSL -o argocd-linux-amd64 https://github.com/argoproj/argo-cd/releases/lat
 sudo install -m 555 argocd-linux-amd64 /usr/local/bin/argocd
 rm argocd-linux-amd64
 argocd login $(kubectl get -n argocd svc argocd-server -o=jsonpath='{.spec.clusterIP}') --username admin --password $(kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo) --plaintext
-argocd cluster add $(kubectl config get-contexts -o name) -y
 
 ###Nginx Ingress Controller
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.4.0/deploy/static/provider/baremetal/deploy.yaml
