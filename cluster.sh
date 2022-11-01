@@ -16,14 +16,18 @@ complete -o default -F __start_kubectl k
 kubectl taint nodes $(kubectl get nodes --no-headers) node-role.kubernetes.io/control-plane:NoSchedule-
 kubectl taint nodes $(kubectl get nodes --no-headers) node-role.kubernetes.io/master:NoSchedule-
 
-###Deploy Argo ( How to modify server inseceure )
+###Deploy Argo ( How to modify server inseceure and restart deployment)
 kubectl create namespace argocd
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+kubectl rollout restart deployment -n argocd argocd-server argocd-repo-server
+kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo > argopass
 
-###Argo CD
+###Argo CD cli
 curl -sSL -o argocd-linux-amd64 https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64
 sudo install -m 555 argocd-linux-amd64 /usr/local/bin/argocd
 rm argocd-linux-amd64
+argocd login $(kubectl get -n argocd svc argocd-server -o=jsonpath='{.spec.clusterIP}') --username admin --password $(kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo) --plaintext
+argocd cluster add $(kubectl config get-contexts -o name) -y
 
 ###Nginx Ingress Controller
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.4.0/deploy/static/provider/baremetal/deploy.yaml
