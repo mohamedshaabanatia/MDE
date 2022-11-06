@@ -35,3 +35,6 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/cont
 ##Configure Argo access
 kubectl apply -f https://raw.githubusercontent.com/mohamedshaabanatia/MDE/master/gRPC-ingress.yaml
 kubectl apply -f https://raw.githubusercontent.com/mohamedshaabanatia/MDE/master/http-ingress.yaml
+
+##Argo app-of-apps
+kubectl apply -f https://raw.githubusercontent.com/mohamedshaabanatia/MDE/master/argocd/app-of-apps
