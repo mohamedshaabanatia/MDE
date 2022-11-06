@@ -21,6 +21,7 @@ kubectl create namespace argocd
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 kubectl patch -n argocd configmaps argocd-cmd-params-cm --type merge -p '{"data":{"server.insecure":"true"}}'
 kubectl rollout restart deployment -n argocd argocd-server argocd-repo-server
+sleep 60
 kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo > argopass
 
 ###Argo CD cli
@@ -31,7 +32,7 @@ argocd login $(kubectl get -n argocd svc argocd-server -o=jsonpath='{.spec.clust
 
 ###Nginx Ingress Controller
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.4.0/deploy/static/provider/baremetal/deploy.yaml
-
+sleep 60
 ##Configure Argo access
 kubectl apply -f https://raw.githubusercontent.com/mohamedshaabanatia/MDE/master/gRPC-ingress.yaml
 kubectl apply -f https://raw.githubusercontent.com/mohamedshaabanatia/MDE/master/http-ingress.yaml
